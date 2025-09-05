@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taşıt Ücret Hesaplayıcı | Twitter için</title>
+    <title>Taşıt Ücret Hesaplayıcı | GitHub Pages</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -208,20 +208,46 @@
             color: #e74c3c;
             font-weight: bold;
         }
+        .instructions {
+            background: #fff8e1;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #ffc107;
+        }
+        .success-banner {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            text-align: center;
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <h1><i class="fas fa-car"></i> Taşıt Ücret Hesaplayıcı</h1>
-            <p class="description">Atilla Avaşar tarafından hazırlanmış Ankara AŞTİ Otopark ücreti hesaplama aracı</p>
+            <p class="description">GitHub Pages ile yayında!</p>
             <div class="twitter-share">
-                <a href="https://twitter.com/intent/tweet?text=Harika%20bir%20Taşıt%20Ücret%20Hesaplayıcı%20buldum!%20Ücretsiz%20ve%20kullanışlı.%20Hemen%20dene:&url=https://example.com" 
-                   target="_blank" class="twitter-share-button">
+                <a href="#" id="twitterShare" target="_blank" class="twitter-share-button">
                    <i class="fab fa-twitter"></i> Twitter'da Paylaş
                 </a>
             </div>
         </header>
+
+        <div class="success-banner" id="successBanner">
+            <i class="fas fa-check-circle"></i> GitHub Pages başarıyla ayarlandı! Artık bu siteye her yerden ulaşabilirsiniz.
+        </div>
+
+        <div class="instructions">
+            <h3><i class="fas fa-info-circle"></i> Nasıl Kullanılır?</h3>
+            <p>1. Taşıt türünü seçin</p>
+            <p>2. Dakika cinsinden süreyi girin</p>
+            <p>3. "Ücreti Hesapla" butonuna tıklayın</p>
+        </div>
 
         <div class="content">
             <div class="input-section">
@@ -302,12 +328,10 @@
         </div>
 
         <footer>
-            <p>© 05.05.2025 Atilla Avşar  @sienbisi | </p>
+            <p>© 2023 Taşıt Ücret Hesaplayıcı | GitHub Pages ile yayınlandı</p>
             <div class="social-links">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
             </div>
         </footer>
     </div>
@@ -410,8 +434,18 @@
             document.getElementById('calculationSteps').innerHTML = 'Hesaplama yapıldıktan sonra detaylar burada görünecektir.';
         }
         
+        // Twitter paylaşım linkini ayarla
+        document.getElementById('twitterShare').href = 
+            `https://twitter.com/intent/tweet?text=Harika%20bir%20Taşıt%20Ücret%20Hesaplayıcı%20buldum!%20Ücretsiz%20ve%20kullanışlı.%20Hemen%20dene:&url=${encodeURIComponent(window.location.href)}`;
+        
         // Sayfa yüklendiğinde varsayılan değerlerle hesaplama yap
-        window.onload = calculatePrice;
+        window.onload = function() {
+            calculatePrice();
+            // GitHub Pages'te çalıştığını göster
+            if (window.location.hostname.includes('github.io')) {
+                document.getElementById('successBanner').style.display = 'block';
+            }
+        };
     </script>
 </body>
 </html>
